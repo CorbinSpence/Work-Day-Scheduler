@@ -22,20 +22,13 @@ $(function () {
   $('.time-block').on('click', 'button', function(event){
     event.preventDefault
     let button = $(event.target)
-    //console.log(event.target.nodeName)
-    //console.log(typeof event.target.nodeName)
-    //console.log(event.target.nodeName==='I')
     if(event.target.nodeName==='I'){
       button = button.parent()
     }
-    //console.log(button)
     let parent = button.parent('.time-block')
-    //console.log(parent)
     let textPrompt = parent.children('textarea')
-    //console.log(textPrompt)
     let text = textPrompt.val()
     localStorage.setItem(parent.attr('id'), text)
-    //console.log(localStorage.getItem(parent.attr('id')))
   })
 
   // TODO: Add code to apply the past, present, or future class to each time
@@ -44,17 +37,10 @@ $(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
 
-  //$('#hour-9').attr('class', futureClass)
   let blocks = $('.container-fluid').children()
-  //console.log(blocks)
   let hour = parseInt(today.format('H'))
-  console.log(hour)
-  //console.log(typeof hour)
   for(let i=0; i<blocks.length; i++){
-    console.log(blocks[i])
-    //$(blocks[i]).attr('class', pastClass)
     let hourValue = parseInt($(blocks[i]).attr('id').match(/[0-9]+/)[0])
-    console.log(hourValue)
     if(hourValue<hour){
       $(blocks[i]).attr('class', pastClass)
     }else if(hourValue>hour){
@@ -72,9 +58,7 @@ $(function () {
   for(let i=0; i<blocks.length; i++){
     let idKey = $(blocks[i]).attr('id')
     let textArea = $(blocks[i]).children('textarea')
-    console.log(textArea)
     let storedValue = localStorage.getItem(idKey)
-    console.log(storedValue)
     if(storedValue!=null){
       textArea.val(storedValue)
     }
@@ -82,7 +66,16 @@ $(function () {
 
   // TODO: Add code to display the current date in the header of the page.
   let dateDisplay = $('#currentDay')
-  dateDisplay.text(today.format('dddd[,] MMMM D[th]'))
+  let suffix = 'th'
+  let day = parseInt(today.format('D'))
+  if(day%10===1){
+    suffix = 'st'
+  }else if(day%10===2){
+    suffix = 'nd'
+  }else if(day%10===3){
+    suffix = 'rd'
+  }
+  dateDisplay.text(today.format('dddd[,] MMMM D')+suffix)
   
 
 });
