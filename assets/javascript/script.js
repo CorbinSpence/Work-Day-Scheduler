@@ -7,6 +7,7 @@ const pastClass = "row time-block past"
 const presentClass = "row time-block present"
 const futureClass = "row time-block future"
 var today = dayjs()
+var saveStatus = $('.save-success')
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
@@ -29,6 +30,7 @@ $(function () {
     let textPrompt = parent.children('textarea')
     let text = textPrompt.val()
     localStorage.setItem(parent.attr('id'), text)
+    saveStatus.text('Appointment added to local storage \u2713')
   })
 
   // TODO: Add code to apply the past, present, or future class to each time
