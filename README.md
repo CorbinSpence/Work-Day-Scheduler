@@ -18,6 +18,16 @@ Website: [Work Day Website](https://corbinspence.github.io/Work-Day-Scheduler/)
 
 Corbin Spence
 
-## Source Code
+## Built From
 
 [Origin](https://github.com/coding-boot-camp/crispy-octo-meme)
+
+    Files Moved:
+    
+    ./develop/index.html -> ./index.html
+
+    ./develop/style.css -> ./assets/css/style
+
+    ./develop/script.js -> ./assets/javascript/script.js
+
+    ./Assets/05-third-party-apis-homework-demo.gif -> ./assets/images/05-third-party-apis-homework-demo.gif
